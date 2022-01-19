@@ -2,9 +2,9 @@ var mysql = require('mysql')
 var userDB = mysql.createPool({
     connectionLimit:10,
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'node_login'
+    user: process.env.USER || 'root',
+    password: process.env.PASSWORD || '',
+    database: process.env.USERSDB || 'node_login'
 })
 
 const getAllUsers = async () => {
