@@ -73,7 +73,7 @@ const clearUsers = () =>{
 // user tokens
 const postUserToken = (d) =>{
     return new Promise((resolve,reject)=>{
-        var queries="INSERT INTO rTokens VALUES ?"
+        var queries="INSERT INTO rtokens VALUES ?"
         var values=[[d.key,d.id]]
         userDB.query(queries,[values],
             (err,results,fields)=>{
@@ -95,7 +95,7 @@ const getAllUserTokens = () => {
 
 const deleteUserTokens = (id) =>{
     return new Promise((resolve,reject)=>{
-        userDB.query("DELETE FROM rTokens WHERE id = ?",[id],
+        userDB.query("DELETE FROM rtokens WHERE id = ?",[id],
         (err,results,feilds)=>{
             if (err) reject(err)
             else resolve(results)
