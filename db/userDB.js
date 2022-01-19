@@ -85,7 +85,7 @@ const postUserToken = (d) =>{
 }
 const getAllUserTokens = () => {
     return new Promise((resolve,reject)=>{
-        userDB.query( 'SELECT * FROM rTokens',
+        userDB.query( 'SELECT * FROM rtokens',
          (err,row,fields) =>{
             if (err) reject(err)
             else resolve(row)
