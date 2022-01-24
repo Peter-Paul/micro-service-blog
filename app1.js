@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require("cors")
 const usersRouter = require('./routes/users/users')
 const authRouter = require('./routes/users/login')
 
@@ -8,11 +9,11 @@ const port=process.env.PORT || 5002
 
 // middleware
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 
 // routes
 app.get('/', (req,res)=>{
-    res.status(200).send({message:`Users route working at ${process.env.PORT}...`})
+    res.status(200).send({message:`Welcome to the admin working at ${port}...`})
 })
 app.use('/users', usersRouter);
 app.use('/auth', authRouter)

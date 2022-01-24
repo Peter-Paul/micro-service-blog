@@ -2,27 +2,10 @@ version: '3'
 
 
 services:
-  # nginx load balancer for app 5
-  lb1:
-    image: nginx:latest
-    restart: always # restart on reboot
-    volumes:
-      - './load-balance-conf/nginx1.conf:/etc/nginx/nginx.conf'
-    ports:
-      - '8080:80' # 8080 for outer OPS (operating system) localhost 80 for inner
-  # nginx load balancer for app 6
-  lb2:
-    image: nginx:latest
-    restart: always # restart on reboot
-    volumes:
-      - './load-balance-conf/nginx1.conf:/etc/nginx/nginx.conf'
-    ports:
-      - '8081:80'
-
   # Admin app
   adminapp:
     image: node-app
-    command: node app.js
+    command: node app1.js
     environment:
       - PORT=3000
 
@@ -72,6 +55,36 @@ services:
     command: node app6.js
     environment: 
       - PORT=5005
+  # nginx load balancer for app 5
+  lb1:
+    image: nginx:latest
+    restart: always # restart on reboot
+    volumes:
+      - './load-balance-conf/nginx1.conf:/etc/nginx/nginx.conf'
+    ports:
+      - '8080:80' # 8080 for outer OPS (operating system) localhost 80 for inner
+    depends_on:
+      - adminapp
+      - blogapp
+      - photoapp1
+      - photoapp2
+      - photoapp3
+      - photoapp4
+  # nginx load balancer for app 6
+  lb2:
+    image: nginx:latest
+    restart: always # restart on reboot
+    volumes:
+      - './load-balance-conf/nginx2.conf:/etc/nginx/nginx.conf'
+    ports:
+      - '8081:80'
+    depends_on:
+      - adminapp
+      - blogapp
+      - photoapp1
+      - photoapp2
+      - photoapp5
+      - photoapp6
 
   # database
 #   db:

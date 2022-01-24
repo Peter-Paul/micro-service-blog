@@ -11,7 +11,7 @@ const os = require("os")
 const port=process.env.PORT || 5005
 
 // middleware
-app.use(cors())
+// app.use(cors())
 app.use(express.json())
 const killWorker =  (res,req,next) => { 
     // middleware to kill cluster worker on request completion
@@ -21,12 +21,7 @@ const killWorker =  (res,req,next) => {
 }
 
 // routes
-app.get('/', (req,res,next)=>{
-    res.status(200).send({message:`Working at ${port}...`})
-    console.log(`Working on port ${port}...`)
-    next()
-},killWorker)
-app.use('/photos', photosRouter,killWorker);
+app.use('/photos4', photosRouter,killWorker);
 
 // create clusters
 const noc = os.cpus().length // number of cpus/processors

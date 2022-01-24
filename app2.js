@@ -8,12 +8,9 @@ const port=process.env.PORT || 5001
 
 // middleware
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 
 // routes
-app.get('/', (req,res)=>{
-    res.status(200).send({message:`Working at...`})
-})
 app.use('/posts', postsRouter);
 
 // serve app
