@@ -1,0 +1,50 @@
+version: '3'
+
+
+services:
+  nginx_load_balancer:
+    image: nginx
+    volumes:
+      - './nginx/default.conf:/etc/nginx/nginx.conf'
+    ports:
+      - '8080:80'
+  # Admin app
+  adminapp:
+    image: node-app
+    environment:
+      - PORT=3000
+  # Blog app
+  blogapp:
+    image: node-app2
+    environment:
+      - PORT=3001
+  # Normal photo app
+  photoapp1:
+    image: node-app3
+    environment: 
+      - PORT=5000
+  # Clustered photo app
+  photoapp2:
+    image: node-app4
+    environment: 
+      - PORT=5001
+  # Load balanced and cached
+  photoapp3:
+    image: node-app5
+    environment: 
+      - PORT=5002
+  photoapp4:
+    image: node-app5
+    environment: 
+      - PORT=5003
+  #Clustered, load balanced and cached
+  photoapp5:
+    image: node-app6
+    environment: 
+      - PORT=5004
+  photoapp6:
+    image: node-app6
+    environment: 
+      - PORT=5005
+
+    

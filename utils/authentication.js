@@ -5,6 +5,9 @@ const {
 const{
     getAllPosts
 } = require('../db/blogDB')
+const{
+    getAllPhotos
+} = require('../db/photoDB')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -27,6 +30,15 @@ const postAvailable = async (postid) => {
     }
 }
 
+const photoAvailable = async (photoid) => {
+    try{
+        var photos = await getAllPhotos()
+        return photos.find(photo=>photo.id===photoid)
+    }catch(err){
+        console.log('DB error',err)
+        return undefined
+    }
+}
 const createSigniture = (user) => {
     return jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'180s'}) //3 minute expiry 
 }
@@ -55,4 +67,4 @@ const authenticateToken = (req,res,next) => { // middleware for any route group 
 
 
 
-module.exports={userAvailable,postAvailable,authenticate,authenticateToken,createSigniture}
+module.exports={userAvailable,postAvailable,photoAvailable,authenticate,authenticateToken,createSigniture}

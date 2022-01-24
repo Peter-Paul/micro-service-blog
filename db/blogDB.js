@@ -2,9 +2,10 @@ var mysql = require('mysql')
 var blogDB = mysql.createPool({
     connectionLimit:10,
     host: 'localhost',
-    user: process.env.USER || 'root',
-    password: process.env.PASSWORD ||'',
-    database: process.env.BLOGDB ||'node_blog'
+    user: 'root',
+    password: '',
+    // password: '123goodluck',
+    database: 'node_blog'
 })
 const moment = require('moment')
 

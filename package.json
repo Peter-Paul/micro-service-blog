@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "users": "node app.js",
+    "blog": "node app2.js",
+    "photo": "node app3.js",
     "dev": "nodemon app.js",
-    "devPost": "nodemon app2.js"
+    "devPost": "nodemon app2.js",
+    "devPhoto": "nodemon app3.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
@@ -23,6 +27,7 @@
     "moment": "^2.29.1",
     "multer": "^1.4.4",
     "mysql": "^2.18.1",
+    "node-fetch": "^3.2.0",
     "uuid": "^8.3.2"
   }
 }

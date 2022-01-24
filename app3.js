@@ -1,20 +1,20 @@
 const express = require('express')
 const app = express()
 const cors = require("cors")
-const postsRouter = require('./routes/blog/posts')
+const photosRouter = require('./routes/photos/photos')
 
 // environment varialbles
-const port=process.env.PORT || 5001
+const port=process.env.PORT || 5002
 
 // middleware
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
 // routes
 app.get('/', (req,res)=>{
-    res.status(200).send({message:`Working at...`})
+    res.status(200).send({message:`Working at ${port}...`})
 })
-app.use('/posts', postsRouter);
+app.use('/photos', photosRouter);
 
-// serve app
+// listen
 app.listen(port, ()=>console.log(`Node server running on ${port}`))
