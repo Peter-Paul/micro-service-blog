@@ -1,9 +1,9 @@
 var mysql = require('mysql')
 var blogDB = mysql.createPool({
     connectionLimit:10,
-    host: 'localhost',
+    host: 'db',
     user: 'root',
-    password: '',
+    password: 'password',
     // password: '123goodluck',
     database: 'node_blog'
 })

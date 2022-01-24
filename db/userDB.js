@@ -1,15 +1,11 @@
 var mysql = require('mysql')
 var userDB = mysql.createPool({
     connectionLimit:10,
-    host: 'localhost',
-    // host: '0.0.0.0',
+    host: 'db',
     user: 'root',
-    password:  '',
-    // password:  '123goodluck',
-    database: process.env.USERSDB || 'node_login',
-    // insecureAuth : true
+    password: 'password',
+    database: 'node_login',
 })
-// console.log(userDB)
 
 const getAllUsers = async () => {
     return new Promise((resolve,reject)=>{

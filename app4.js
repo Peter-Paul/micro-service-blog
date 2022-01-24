@@ -6,6 +6,7 @@ const cors = require("cors")
 const photosRouter = require('./routes/photos/photos')
 const cluster = require("cluster")
 const os = require("os")
+const sp = require('./utils/showPort')
 
 // environment varialbles
 const port=process.env.PORT || 5003
@@ -21,7 +22,7 @@ const killWorker =  (res,req,next) => {
 }
 
 // routes
-app.use('/photos2', photosRouter,killWorker);
+app.use('/photos2', sp, photosRouter,killWorker);
 
 // create clusters
 const noc = os.cpus().length // number of cpus/processors
