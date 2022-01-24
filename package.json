@@ -10,7 +10,10 @@
     "photo": "node app3.js",
     "dev": "nodemon app.js",
     "devPost": "nodemon app2.js",
-    "devPhoto": "nodemon app3.js"
+    "devPhoto1": "nodemon app3.js",
+    "devPhoto2": "nodemon app4.js",
+    "devPhoto3": "nodemon app5.js",
+    "devPhoto4": "nodemon app6.js"
   },
   "keywords": [],
   "author": "",
