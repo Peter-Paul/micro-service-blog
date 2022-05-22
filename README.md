@@ -1,5 +1,5 @@
 # micro-service-blog
-Implementation of Micro Service Architucture, Clustering, Load Balancing and Caching
+Implementation of Micro Service Architucture, Clustering, Load Balancing and Caching with Node js on an nginx server
 
 1. `git clone https://github.com/Peter-Paul/micro-service-blog.git`
 2. go to project folder.
